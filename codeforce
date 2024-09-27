@@ -10,6 +10,52 @@ def gen_file(file_name="problem.cpp"):
 
 using namespace std;
 typedef long long ll;
+// Uncomment the following line to enable debug mode
+/*#define DEBUG*/
+
+#ifdef DEBUG
+    // Variadic template function to handle multiple arguments in debug prints
+    void debug_print() {
+        cerr << '\n';
+    }
+
+    template <typename T, typename... Args>
+    void debug_print(T first, Args... args) {
+        cerr << first;
+        if (sizeof...(args)) {
+            cerr << " | ";
+        }
+        debug_print(args...);
+    }
+
+    // Macro to streamline debug printing
+    #define dbg(...) \
+        { \
+            cerr << "DEBUG [" << __FUNCTION__ << ":" << __LINE__ << "] "; \
+            debug_print(__VA_ARGS__); \
+        }
+#else
+    #define dbg(...) do {} while(0)
+#endif
+template <typename T>
+ostream& operator<<(ostream& os, const vector<T>& vec) {
+    os << "[";
+    for (size_t i = 0; i < vec.size(); ++i) {
+        os << vec[i];
+        if (i != vec.size() - 1)
+            os << ", ";
+    }
+    os << "]";
+    return os;
+}
+
+// You can overload `operator<<` for other containers as needed
+// For example, for pairs:
+template <typename T, typename U>
+ostream& operator<<(ostream& os, const pair<T, U>& p) {
+    os << "(" << p.first << ", " << p.second << ")";
+    return os;
+}
 
 void solve() {
 
