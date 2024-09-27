@@ -38,13 +38,9 @@ int main() {
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('command') 
     parser.add_argument('filename', nargs='?', help="name of file")
     args = parser.parse_args()
 
-    if args.command != 'codeforce':
-        printf("An error has occured")
-    
     if args.filename:
         gen_file(args.filename)
     else:
@@ -52,6 +48,7 @@ def main():
     
 if __name__ == "__main__":
     main()
+
 
 
 
